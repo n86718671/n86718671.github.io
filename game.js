@@ -3,6 +3,12 @@
   const GRID_SIZE = 20;
   const STEP_MS = 130;
   const MIN_STEP_MS = 72;
+  const DIRECTION_MAP = {
+    up: { x: 0, y: -1 },
+    down: { x: 0, y: 1 },
+    left: { x: -1, y: 0 },
+    right: { x: 1, y: 0 },
+  };
 
   function sameCell(a, b) {
     return a.x === b.x && a.y === b.y;
@@ -164,6 +170,8 @@
         return;
       }
       this.paused = !this.paused;
+      this.lastFrame = performance.now();
+      this.accumulator = 0;
       this.syncUI(this.paused ? "Paused" : "Playing");
     }
 
@@ -237,7 +245,29 @@
       }
     }
 
-    setDirection(next) {
+    normalizeDirection(next) {
+      if (typeof next === "string") {
+        return DIRECTION_MAP[next] || null;
+      }
+
+      if (
+        next &&
+        Number.isFinite(next.x) &&
+        Number.isFinite(next.y) &&
+        Math.abs(next.x) + Math.abs(next.y) === 1
+      ) {
+        return next;
+      }
+
+      return null;
+    }
+
+    setDirection(nextRaw) {
+      const next = this.normalizeDirection(nextRaw);
+      if (!next) {
+        return;
+      }
+
       if (this.gameOver) {
         this.start();
       }
@@ -311,7 +341,14 @@
     loop(now) {
       requestAnimationFrame(this.loop);
 
-      if (!this.running || this.paused || this.gameOver) {
+      if (!this.running || this.gameOver) {
+        this.draw();
+        return;
+      }
+
+      if (this.paused) {
+        this.lastFrame = now;
+        this.accumulator = 0;
         this.draw();
         return;
       }
