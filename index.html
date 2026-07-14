@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="A professional portfolio website. Profile content is pending review."
+    >
+    <title>Professional Portfolio</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./game.js" defer></script>
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <a class="wordmark" href="#home" aria-label="Professional Portfolio home">
+        <span class="wordmark-mark" aria-hidden="true">P/</span>
+        <span>Portfolio</span>
+      </a>
+
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+      >
+        <span class="nav-toggle-label">Menu</span>
+        <span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span></span>
+      </button>
+
+      <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a class="games-link" href="#games">Games</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="home" aria-labelledby="home-title">
+        <div class="section-index" aria-hidden="true">01</div>
+        <div class="hero-copy">
+          <p class="eyebrow">Professional portfolio · Static web edition</p>
+          <h1 id="home-title">A considered space for work and ideas.</h1>
+          <p class="lede">
+            Profile details and professional content will be added after human review.
+            This first release establishes the accessible, responsive foundation.
+          </p>
+          <a class="text-link" href="#about">Explore the structure <span aria-hidden="true">↘</span></a>
+        </div>
+        <p class="edition-note" aria-label="Website status">
+          Foundation<br>
+          Edition 01
+        </p>
+      </section>
+
+      <section class="content-section" id="about" aria-labelledby="about-title">
+        <div class="section-heading">
+          <p class="section-number" aria-hidden="true">02</p>
+          <h2 id="about-title">About</h2>
+        </div>
+        <div class="section-body">
+          <p class="placeholder-label">Content pending review</p>
+          <p>
+            A verified introduction, experience summary, and areas of expertise will
+            appear here. No personal or professional claims have been inferred.
+          </p>
+          <ul class="detail-list" aria-label="Profile details awaiting confirmation">
+            <li><span>Focus</span><strong>[Human confirmation required]</strong></li>
+            <li><span>Location</span><strong>[Human confirmation required]</strong></li>
+            <li><span>Availability</span><strong>[Human confirmation required]</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="content-section" id="experience" aria-labelledby="experience-title">
+        <div class="section-heading">
+          <p class="section-number" aria-hidden="true">03</p>
+          <h2 id="experience-title">Experience</h2>
+        </div>
+        <div class="section-body">
+          <p class="placeholder-label">Professional history pending review</p>
+          <p>
+            Roles, organizations, dates, and public achievements will be listed only
+            after their wording and disclosure scope are confirmed.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-section" id="projects" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <p class="section-number" aria-hidden="true">04</p>
+          <h2 id="projects-title">Projects</h2>
+        </div>
+        <div class="section-body project-placeholder">
+          <p class="placeholder-label">Selected work pending review</p>
+          <p>
+            Approved project names, descriptions, roles, and links will be added in
+            the professional content loop.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-section games-section" id="games" aria-labelledby="games-title">
+        <div class="section-heading">
+          <p class="section-number" aria-hidden="true">05</p>
+          <h2 id="games-title">Games</h2>
+        </div>
+        <div class="section-body game-shell">
+          <div class="game-intro">
+            <p class="placeholder-label">Interactive experiment · Ready to play</p>
+            <h3>Snake / 01</h3>
+            <p>
+              Guide the snake to food without touching the walls or yourself. Use
+              Arrow keys or W/A/S/D, the touch controls, or swipe on the board.
+            </p>
+          </div>
+
+          <div class="game-panel" aria-labelledby="game-panel-title">
+            <h3 class="visually-hidden" id="game-panel-title">Playable Snake game</h3>
+            <div class="game-scoreboard" aria-label="Game score">
+              <p>Score <strong id="game-score">000</strong></p>
+              <p>Best <strong id="game-best">000</strong></p>
+            </div>
+
+            <div class="game-board-frame">
+              <canvas
+                id="game-canvas"
+                width="400"
+                height="400"
+                role="img"
+                aria-label="Snake game board. Start the game, then use Arrow keys, W A S D, touch buttons, or swipe."
+                tabindex="0"
+              >
+                Your browser does not support the canvas element required for Snake.
+              </canvas>
+              <div class="game-overlay" id="game-overlay">
+                <p class="game-overlay-kicker">Snake / 01</p>
+                <p class="game-overlay-title" id="game-overlay-title">Ready?</p>
+                <button class="game-primary" id="game-start" type="button">Start game</button>
+              </div>
+            </div>
+
+            <p class="game-status" id="game-status" role="status" aria-live="polite">
+              Ready. Start the game to begin.
+            </p>
+
+            <div class="game-actions" aria-label="Game actions">
+              <button id="game-pause" type="button" disabled>Pause</button>
+              <button id="game-restart" type="button">Restart</button>
+            </div>
+
+            <div class="direction-pad" aria-label="Touch direction controls">
+              <button class="direction-up" type="button" data-direction="up" aria-label="Move up">↑</button>
+              <button class="direction-left" type="button" data-direction="left" aria-label="Move left">←</button>
+              <button class="direction-down" type="button" data-direction="down" aria-label="Move down">↓</button>
+              <button class="direction-right" type="button" data-direction="right" aria-label="Move right">→</button>
+            </div>
+
+            <p class="game-help">Pause with Space or the Pause button. Best score is stored on this device.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="section-heading">
+          <p class="section-number" aria-hidden="true">06</p>
+          <h2 id="contact-title">Contact</h2>
+        </div>
+        <div class="section-body">
+          <p class="placeholder-label">Contact details pending review</p>
+          <p>
+            A confirmed email address and approved professional profile links will be
+            published here. No private contact information is included in this build.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Professional Portfolio</p>
+      <p>© <span id="current-year">2026</span> · Built for the open web</p>
+    </footer>
+  </body>
+</html>
