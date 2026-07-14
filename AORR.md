@@ -30,6 +30,7 @@
 
 - `Loop-001` 실행 상태: `PASSED`
 - `Loop-002` 실행 상태: `PASSED`
+- `Loop-003` 실행 상태: `PASSED`
 - `Loop-004` 실행 상태: `PASSED`
 
 ### 상태 전이
